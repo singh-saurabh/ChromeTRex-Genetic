@@ -18,7 +18,10 @@ var dinoX = 20;
 var dinoY = canvas.height - 60;
 var jump = 0;
 //jump 0 : not ; 1: up ; 2: down
-var dy = -2;
+var dy = -3;
+var cactus1X;
+var cactus2X;
+
 
 function draw(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -49,11 +52,7 @@ function drawDino() {
 document.addEventListener("keydown", keyDownHandler, false);
 
 function keyDownHandler(e){
-  console.log("called")
-
   if (e.keyCode == 32) {
-    console.log("ini")
-
     jumpDino();
   }
 }
@@ -62,7 +61,6 @@ function jumpDino(){
   if (jump == 0){
     jump = 1;
   }
-
 }
 draw();
   </script>
