@@ -10,7 +10,7 @@
     </style>
 
 <body>
-  <canvas id="myCanvas" width="480" height="320"></canvas>
+  <canvas id="myCanvas" width="600" height="480"></canvas>
   <script>
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -20,8 +20,15 @@ var jump = 0;
 //jump 0 : not ; 1: up ; 2: down
 var dy = -3;
 var cactus1X;
-var cactus1Type;
-var cactus2Type;
+var cactus1Type = 0;
+var cactus1Width;
+var cactus1Height;
+var cactus2X;
+var cactus2Type = 1;
+var cactus2Width;
+var cactus2Height;
+var cactusY;
+
 /*
 Cactus types:
 0: small - 1
@@ -31,7 +38,6 @@ Cactus types:
 4: Big - 2
 5: Big - 3
 6: Mix - 4
-
 */
 
 function draw(){
@@ -58,6 +64,23 @@ function drawDino() {
   ctx.fillStyle = "#000000";
   ctx.fill();
   ctx.closePath();
+}
+
+function drawCactus(){
+  //cactus 1
+  ctx.beginPath();
+  ctx.rect(cactus1X, cactusY, 20, 45);
+  ctx.fillStyle = "#000000";
+  ctx.fill();
+  ctx.closePath();
+
+  //cactus 2
+  ctx.beginPath();
+  ctx.rect(cactus2X, cactusY, 20, 45);
+  ctx.fillStyle = "#000000";
+  ctx.fill();
+  ctx.closePath();
+
 }
 
 document.addEventListener("keydown", keyDownHandler, false);
