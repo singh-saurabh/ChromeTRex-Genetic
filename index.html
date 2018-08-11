@@ -20,8 +20,19 @@ var jump = 0;
 //jump 0 : not ; 1: up ; 2: down
 var dy = -3;
 var cactus1X;
-var cactus2X;
+var cactus1Type;
+var cactus2Type;
+/*
+Cactus types:
+0: small - 1
+1: small - 2
+2: small - 3
+3: Big - 1
+4: Big - 2
+5: Big - 3
+6: Mix - 4
 
+*/
 
 function draw(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -44,7 +55,7 @@ function draw(){
 function drawDino() {
   ctx.beginPath();
   ctx.rect(dinoX, dinoY, 30, 50);
-  ctx.fillStyle = "#FF0000";
+  ctx.fillStyle = "#000000";
   ctx.fill();
   ctx.closePath();
 }
