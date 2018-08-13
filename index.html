@@ -6,28 +6,42 @@
     <title> No Internet Game</title>
     <style>
     	* { padding: 0; margin: 0; }
+      <!--
+      Replace with  #ff
+      f-->
     	canvas { background: #eee; display: block; margin: 0 auto; }
     </style>
 
 <body>
-  <canvas id="myCanvas" width="600" height="480"></canvas>
+  <canvas id="myCanvas" width="700" height="200"></canvas>
   <script>
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+
+var baseHeight = 40;
+
 var dinoX = 20;
-var dinoY = canvas.height - 60;
-var jump = 0;
+var dinoHeight = 50;
+var dinoY = canvas.height - baseHeight - dinoHeight;
+
+//Variables for jump type
 //jump 0 : not ; 1: up ; 2: down
+var jump = 0;
 var dy = -3;
-var cactus1X;
+
+//variables for cactus1
+var cactus1X = 100;
 var cactus1Type = 0;
-var cactus1Width;
-var cactus1Height;
-var cactus2X;
-var cactus2Type = 1;
-var cactus2Width;
-var cactus2Height;
-var cactusY;
+var cactus1Width = 45;
+var cactus1Height = 50;
+var cactus1Y = canvas.height -baseHeight - cactus1Height ;
+
+//variables for cactus2
+var cactus2X = 180;
+var cactus2Type = 0;
+var cactus2Width = 45;
+var cactus2Height = 50;
+var cactus2Y = canvas.height - baseHeight - cactus2Height ;
 
 /*
 Cactus types:
@@ -43,6 +57,7 @@ Cactus types:
 function draw(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawDino();
+  drawCactus();
   if (jump == 1 && dinoY >= canvas.height - 120){
     dinoY +=dy;
   }
@@ -60,7 +75,7 @@ function draw(){
 
 function drawDino() {
   ctx.beginPath();
-  ctx.rect(dinoX, dinoY, 30, 50);
+  ctx.rect(dinoX, dinoY, 30, dinoHeight);
   ctx.fillStyle = "#000000";
   ctx.fill();
   ctx.closePath();
@@ -69,18 +84,22 @@ function drawDino() {
 function drawCactus(){
   //cactus 1
   ctx.beginPath();
-  ctx.rect(cactus1X, cactusY, 20, 45);
+  ctx.rect(cactus1X, cactus1Y, cactus1Width, cactus1Height);
   ctx.fillStyle = "#000000";
   ctx.fill();
   ctx.closePath();
 
   //cactus 2
   ctx.beginPath();
-  ctx.rect(cactus2X, cactusY, 20, 45);
+  ctx.rect(cactus2X, cactus2Y, cactus2Width, cactus2Height);
   ctx.fillStyle = "#000000";
   ctx.fill();
   ctx.closePath();
 
+}
+
+function nextCactusGuesser() {
+  return Math.floor(Math.random() * 7);
 }
 
 document.addEventListener("keydown", keyDownHandler, false);
